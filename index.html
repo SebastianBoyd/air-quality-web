@@ -111,6 +111,16 @@
             background-color: rgba(0, 0, 0, 0.5);
             position: relative;
         }
+        footer {
+            position:absolute;
+            bottom:0;
+            right:0;
+            padding: 4px;
+        }
+        footer > a {
+            text-decoration: none;
+            font-weight: 0.75em;
+        }
     </style>
     <script>
         function Linear(AQIhigh, AQIlow, Conchigh, Conclow, Concentration) {
@@ -241,5 +251,8 @@
         document.getElementById("pressure").innerHTML = aq_data.pressure.toFixed(2);
     </script>
 </body>
+<footer>
+    <a href="https://docs.google.com/document/d/15o4ma3H6Dx1ETrAxq9cVA-CwegXly8KtFAE1k-uc4R4/edit?usp=sharing">Privacy Policy</a>
+</footer>
 
 </html>
