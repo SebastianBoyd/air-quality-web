@@ -152,7 +152,7 @@
             } else if (c >= 350.5 && c < 500.5) {
                 AQI = Linear(500, 401, 500.4, 350.5, c);
             } else {
-                AQI = "999";
+                AQI = "500";
             }
             return AQI;
         }
@@ -177,7 +177,7 @@
             } else if (c >= 505 && c < 605) {
                 AQI = Linear(500, 401, 604, 505, c);
             } else {
-                AQI = "PM10message";
+                AQI = "500";
             }
             return AQI;
         }
@@ -221,7 +221,7 @@
                 data.color = "#B22222";
                 data.percent = (AQI - 300) / 400.0;
                 data.percent = AQIpercent(AQI, 300, 400);
-            } else if (AQI <= 500) {
+            } else if (AQI < 500) {
                 data.text = "Super Hazardous";
                 data.color = "#800000";
                 data.percent = (AQI - 400) / 500.0;
@@ -238,7 +238,11 @@
         console.log(aqi_vals)
         var aqi = Math.max.apply(Math, aqi_vals);
         var aqi_desc = AQItoDesc(aqi);
-        document.getElementById("aqi").innerHTML = aqi;
+        if (aqi == 500) {
+            document.getElementById("aqi").innerHTML = aqi + '+';
+        } else {
+            document.getElementById("aqi").innerHTML = aqi;
+        }
         document.getElementById("aqi_name").innerHTML = aqi_desc.text;
         document.getElementById("aqi-container").style.backgroundColor = aqi_desc.color;
         document.getElementById("percent").style.width = aqi_desc.percent + '%';
